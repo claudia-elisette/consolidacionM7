@@ -18,7 +18,7 @@ export default new Vuex.Store({
         descripcion: 'Curso con las nuevas actualizaciones de JavaScript.' 
       },
       { id: 2, 
-        img: 'https://lineadecodigo.com/wpcontent/uploads/2014/04/css.png', 
+        img: 'https://lineadecodigo.com/wp-content/uploads/2014/04/css.png', 
         nombre: 'CSS para principiantes',
         costo: 10000, 
         duracion: '1 mes', 
@@ -29,7 +29,7 @@ export default new Vuex.Store({
         descripcion:'Aprendiendo estilos con CSS desde el nivel más básico.' 
       },
       { id: 3, 
-        img: 'https://1000marcas.net/wpcontent/uploads/2020/11/JavaScript-logo.jpg', 
+        img: 'https://i.pinimg.com/564x/45/c8/92/45c8926e25926d97d53c54a0b86350b8.jpg', 
         nombre: 'JavaScript Básico de 0 a 100', 
         costo: 20000, 
         duracion: '2 meses', 
@@ -51,7 +51,7 @@ export default new Vuex.Store({
         descripcion:'Aprende HTML 5 y crea tus primeras páginas web paso a paso con decenas de ejercicios.' 
       },
       { id: 5, 
-        img: 'https://logosandtypes.com/wpcontent/uploads/2020/08/vue.svg', 
+        img: 'https://ih1.redbubble.net/image.319465116.6151/st,small,507x507-pad,600x600,f8f8f8.u2.jpg', 
         nombre: 'Vue JS de 0 a 100', 
         costo: 85500, 
         duracion: '5 meses', 
@@ -75,6 +75,7 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    
   },
   mutations: {
   },
