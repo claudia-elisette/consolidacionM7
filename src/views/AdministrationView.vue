@@ -1,21 +1,15 @@
 <template>
-  <div>
-    <h1>Home</h1>
-  </div>
+    <h1> Nuevo Componente</h1>
 </template>
 
 <script>
-  import { mapState } from 'vuex';
-
-  export default {
-    name: 'Home-view',
+export default {
+    name: 'component-name',
     // props: {},
     data: function(){
         return {}
     },
-    computed: {
-      ...mapState(['cursos'])
-    },
+    // computed: {},
     //methods: {}
     // watch: {},
     // components: {},
@@ -23,5 +17,9 @@
     // filters: {},
     // -- Lifecycle Methods
     // -- End Lifecycle Methods
-  }
+}
 </script>
+
+<style scoped>
+    
+</style>
