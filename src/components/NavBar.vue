@@ -22,18 +22,11 @@
                     v-model="group"
                     active-class="deep-purple--text text--accent-4"
                 >
-                    <v-list-item>
+                    <v-list-item v-for="(route,i) in routes" :key="i" @click="redirectTo(route.name)">
                         <v-list-item-icon>
-                        <v-icon>mdi-home</v-icon>
+                        <v-icon>{{route.icon}}</v-icon>
                         </v-list-item-icon>
-                        <v-list-item-title>Inicio</v-list-item-title>
-                    </v-list-item>
-
-                    <v-list-item>
-                        <v-list-item-icon>
-                        <v-icon>mdi-wrench</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-title>Administración</v-list-item-title>
+                        <v-list-item-title>{{route.title}}</v-list-item-title>
                     </v-list-item>
                 </v-list-item-group>
             </v-list>
@@ -49,10 +42,32 @@ export default {
         return {
             drawer: false,
             group: null,
+            routes:[
+                {
+                    icon:"mdi-home",
+                    title:"Inicio",
+                    name:"home"
+                },
+                {
+                    icon:"mdi-wrench",
+                    title:"Administración",
+                    name:"administracion"
+                },
+            ],
         }
     },
-    // computed: {},
-    //methods: {}
+    computed: {
+        currentName(){
+            return this.$route.name
+        }
+    },
+    methods: {
+        redirectTo(routeName){
+            if(this.currentName == routeName) return
+
+            this.$router.push({name:routeName})
+        }
+    },
     // watch: {},
     // components: {},
     // mixins: [],
