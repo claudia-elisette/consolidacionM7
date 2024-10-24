@@ -1,18 +1,40 @@
 <template>
-    <h1> Nuevo Componente</h1>
+    <div>
+        <v-container class="mt-5">
+            <h1>Administración</h1>
+            <v-row justify="center" class="mt-10">
+                <AddCourse></AddCourse>
+            </v-row>
+            <v-row justify="center" class="mt-10">
+                <Table></Table>
+            </v-row>
+        </v-container>
+        <div></div>
+    </div>
+    
 </template>
 
 <script>
+import AddCourse from '@/components/addCourse.vue';
+import Table from '@/components/Table.vue';
+
 export default {
-    name: 'component-name',
+    name: 'administration-view',
     // props: {},
     data: function(){
-        return {}
+        return {
+            showAdd:false,
+        }
     },
     // computed: {},
-    //methods: {}
+    methods: {
+        
+    },
     // watch: {},
-    // components: {},
+    components: {
+        Table,
+        AddCourse
+    },
     // mixins: [],
     // filters: {},
     // -- Lifecycle Methods
@@ -21,5 +43,9 @@ export default {
 </script>
 
 <style scoped>
-    
+    h1{
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 400;
+    }
 </style>

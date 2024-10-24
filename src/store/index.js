@@ -1,3 +1,4 @@
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -78,8 +79,14 @@ export default new Vuex.Store({
     
   },
   mutations: {
+    ADD_COURSE: (state, course)=>{
+      state.cursos.push(course)
+    }
   },
   actions: {
+    addCourse:({commit}, course)=>{
+      commit('ADD_COURSE', course)
+    }
   },
   modules: {
   }
