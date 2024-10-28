@@ -38,9 +38,9 @@ export default {
     computed: {
     },
     methods: {
-        ...mapActions(['addCourse']),
-        add(course){
-            this.addCourse(course)
+        ...mapActions(['addCurso']),
+        add(curso){
+            this.addCurso(curso)
             this.dialog=false
         }
     },

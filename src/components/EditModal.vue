@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-card-title >
-          <span class="text-h5">Agregar Curso</span>
+          <span class="text-h5">Editar Curso</span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -65,8 +65,19 @@
                 >
                     <v-text-field
                         label="Fecha de registro"
-                        :value="myCurso.fecha_registro"
+                        v-model="myCurso.fecha_registro"
                         readonly
+                    ></v-text-field>
+                </v-col>
+                <v-col
+                    cols="12"
+                    sm="6"
+                >
+                    <v-text-field
+                        label="Terminado"
+                        v-model="myCurso.completado"
+                        required
+                        hint="true/false"
                     ></v-text-field>
                 </v-col>
                 <v-col
@@ -96,14 +107,14 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="blue darken-1"
+            color="green"
             text
-            @click="setCurso()"
+            @click="updateCurso(id)"
           >
-            Agregar
+            Editar
           </v-btn>
           <v-btn
-            color="blue darken-1"
+            color="red"
             text
             @click="$emit('close')"
           >
@@ -115,48 +126,50 @@
 
 <script>
 import { mapState } from 'vuex';
+
 export default {
     name: 'component-name',
-    // props: {},
+    props: {
+        id:{
+            type:Number,
+            required:true
+        },
+    },
     data: function(){
         return {
-            myCurso:{
-                id: "", 
-                img: "",
-                nombre: "", 
-                costo: "", 
-                duracion: "", 
-                cupos: "", 
-                inscritos: "", 
-                completado: false, 
-                fecha_registro: "",
-                descripcion:""
-            }
+            myCurso:{}
         }
+        
     },
     computed: {
-        ...mapState(["cursos"])
+        ...mapState(['cursos'])
     },
     methods: {
-        setDate(){
-            let date = new Date()
-            this.myCurso.fecha_registro = date.toLocaleDateString()
+        setMycurso(id){
+            let index = this.cursos.findIndex((curso)=> curso.id == id)
+
+            this.myCurso = this.cursos[index]
+
+            console.log(this.myCurso)
         },
-        setCurso(){
+        updateCurso(id){
+            if(this.myCurso.completado== "true"){
+                this.myCurso.completado = true
+                this.myCurso.inscritos = 0
+            }else{
+                this.myCurso.completado = false
+            }
             
             if(this.myCurso.cupos < this.myCurso.inscritos){
                 alert("La cantidad de inscritos no debe superar los cupos disponibles")
                 return
             }
 
-            this.myCurso.id = Number(Math.floor(Math.random()*1000))
-
-            let curso = this.myCurso
-
-            console.log(curso)
-
-            this.$emit('add', curso)
-        }
+            let index = this.cursos.findIndex((curso)=> curso.id == id)
+            this.cursos[index] = this.myCurso
+            console.log(this.cursos[index])
+            this.$emit('close')
+        },
     },
     // watch: {},
     // components: {},
@@ -164,7 +177,7 @@ export default {
     // filters: {},
     // -- Lifecycle Methods
         created(){
-            this.setDate()
+            this.setMycurso(this.id)
         }
     // -- End Lifecycle Methods
 }

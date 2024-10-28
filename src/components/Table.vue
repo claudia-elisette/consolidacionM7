@@ -1,18 +1,21 @@
 <template>
-    <v-simple-table>
-        <template v-slot:default>
-            <thead>
-                <tr>
-                <th v-for="(header,i) in tableHeaders" :key="i" class="text-left">
-                    {{header}}
-                </th>
-                </tr>
-            </thead>
-            <tbody>
-                <TableRow v-for="curso in cursos" :key="curso.id" :curso="curso" @delete="deleteCourse"></TableRow>
-            </tbody>
-        </template>
-  </v-simple-table>
+    <div>
+        <v-simple-table>
+            <template v-slot:default>
+                <thead>
+                    <tr>
+                    <th v-for="(header,i) in tableHeaders" :key="i" class="text-left">
+                        {{header}}
+                    </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <TableRow v-for="curso in cursos" :key="curso.id" :curso="curso"></TableRow>
+                </tbody>
+            </template>
+        </v-simple-table>
+    </div>
+    
 </template>
 
 <script>
@@ -23,21 +26,17 @@ export default {
     // props: {},
     data: function(){
         return {
-            tableHeaders:["Curso", "Cupos", "Inscritos","Duración","Costo","Terminado","Fecha","Acciones"]
+            tableHeaders:["Curso", "Cupos", "Inscritos","Duración","Costo","Terminado","Fecha","Acciones"],
+            myId:"",
         }
     },
     computed: {
         ...mapState(['cursos'])
     },
-    methods: {
-        deleteCourse(id){
-            let index = this.cursos.findIndex((curso)=> curso.id == id)
-            this.cursos.splice(index,1)
-        }
-    },
+    //methods: {},
     // watch: {},
     components: {
-        TableRow
+        TableRow,
     },
     // mixins: [],
     // filters: {},
@@ -47,5 +46,8 @@ export default {
 </script>
 
 <style scoped>
-    
+    .modal{
+        width: 100vw;
+
+    }
 </style>

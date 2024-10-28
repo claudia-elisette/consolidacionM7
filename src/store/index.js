@@ -76,16 +76,40 @@ export default new Vuex.Store({
     ]
   },
   getters: {
-    
+    totalCupos:state=>{
+      return state.cursos.reduce((total,curso)=>{
+        return total + curso.cupos
+      },0)
+    },
+    totalInscritos: state=>{
+      return state.cursos.reduce((total,curso)=>{
+        return total + curso.inscritos
+      },0)      
+    },
+    cursosTerminados: state=>{
+       
+      const terminados = state.cursos.filter((curso)=> curso.completado == true)
+      return terminados.length
+
+    },
+    cursosActivos: state=>{
+       
+      const terminados = state.cursos.filter((curso)=> curso.completado == false)
+      return terminados.length
+
+    },
+    totalCursos: state=>{
+      return state.cursos.length
+    }
   },
   mutations: {
-    ADD_COURSE: (state, course)=>{
-      state.cursos.push(course)
+    ADD_CURSO: (state, curso)=>{
+      state.cursos.push(curso)
     }
   },
   actions: {
-    addCourse:({commit}, course)=>{
-      commit('ADD_COURSE', course)
+    addCurso:({commit}, curso)=>{
+      commit('ADD_CURSO', curso)
     }
   },
   modules: {

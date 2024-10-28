@@ -3,10 +3,13 @@
         <v-container class="mt-5">
             <h1>Administración</h1>
             <v-row justify="center" class="mt-10">
-                <AddCourse></AddCourse>
+                <AddBtn></AddBtn>
             </v-row>
             <v-row justify="center" class="mt-10">
                 <Table></Table>
+            </v-row>
+            <v-row class="alerts">
+                <Alert></Alert>
             </v-row>
         </v-container>
         <div></div>
@@ -15,7 +18,8 @@
 </template>
 
 <script>
-import AddCourse from '@/components/addCourse.vue';
+import AddBtn from '@/components/AddBtn.vue';
+import Alert from '@/components/Alert.vue';
 import Table from '@/components/Table.vue';
 
 export default {
@@ -33,7 +37,8 @@ export default {
     // watch: {},
     components: {
         Table,
-        AddCourse
+        AddBtn,
+        Alert
     },
     // mixins: [],
     // filters: {},
