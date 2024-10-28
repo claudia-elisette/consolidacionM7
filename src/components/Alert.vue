@@ -116,7 +116,7 @@ export default {
     computed: {
         ...mapGetters(['totalCupos', 'totalInscritos','cursosTerminados','cursosActivos','totalCursos']),
         cuposRestantes(){
-            return this.totalCupos -this.totalInscritos 
+            return this.totalCupos - this.totalInscritos 
         }
 
     },
